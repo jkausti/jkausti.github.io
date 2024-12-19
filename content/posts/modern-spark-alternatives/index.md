@@ -1,7 +1,7 @@
 ---
 title: "Spark in 2025 - Should you go with it?"
 draft: false
-date: 2024-12-19T20:00:00.000Z
+date: 2024-12-18T20:00:00.000Z
 description: "Spark is getting old."
 categories:
   - Data Engineering
