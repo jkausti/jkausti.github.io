@@ -99,8 +99,8 @@ After the release of Apache Arrow in 2016, more performant tools that do not use
 distributed computing started emerging. On the Python-side, Polars emerged as a
 dataframe library that is way more performant than Pandas. Around the same time,
 DuckDB emerged on the SQL side. And both of them absolutely weep the floor with
-Apache Spark when run on a single machine. According to (these
-benchmarks)[https://duckdblabs.github.io/db-benchmark/] from September this year
+Apache Spark when run on a single machine. According to [these
+benchmarks](https://duckdblabs.github.io/db-benchmark/) from September this year
 (2024), both Polars and DuckDB are several times faster than Apache Spark for
 both group by- and join-operations for all three used dataset sizes (500mb, 5gb
 and 50gb). These benchmarks are run on a single machine with a 128 core
@@ -109,8 +109,8 @@ ones to even complete the join-queries, as the rest of the tools either reported
 Out-of-memory errors or other kinds of timeout errors.
 
 There are a bunch of other benchmarks as well out there showing a similar
-pattern, for example (this one)[https://docs.coiled.io/blog/tpch.html] or (this
-one)[https://medium.com/walmartglobaltech/duckdb-vs-the-titans-spark-elasticsearch-mongodb-a-comparative-study-in-performance-and-cost-5366b27d5aaa]
+pattern, for example [this one](https://docs.coiled.io/blog/tpch.html) or [this
+one](https://medium.com/walmartglobaltech/duckdb-vs-the-titans-spark-elasticsearch-mongodb-a-comparative-study-in-performance-and-cost-5366b27d5aaa)
 out there as well that also shows quite poor performance for Apache Spark. The
 latter also has some basic cost-calculations where Spark is 50 times as
 expensive as running DuckDB.
@@ -129,7 +129,5 @@ Well, if you are looking to improve your price/performance, migrating some of
 your pipelines to Polars or DuckDB is not a bad idea, since you will be able to
 process the same data with less cores and less memory. But there is of course a
 migration cost in terms of development time and other factors that you need to
-take into account when making the decision. Questions you can ask yourself are: Do you need both SQL and Dataframe
-API? How many tools can your team support? Does your team have the skills and
-motivations to work with these newer tools?
-
+take into account when making the decision. Spark is very mature and a tried and
+tested product, but is it starting to reach the end of it's product lifecycle?
