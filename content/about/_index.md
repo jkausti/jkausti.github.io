@@ -4,7 +4,6 @@ draft: false
 layout: "home"
 ---
 
-
 I have been working in data engineering since beginning of 2019, both in-house,
 as a consultant, and now as a freelancer. I am specializing in cloud based data
 engineering and have experience from building data platforms with several
