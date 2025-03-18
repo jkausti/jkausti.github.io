@@ -98,7 +98,7 @@ their data career with Pandas, myself included.
 After the release of Apache Arrow in 2016, more performant tools that do not use
 distributed computing started emerging. On the Python-side, Polars emerged as a
 dataframe library that is way more performant than Pandas. Around the same time,
-DuckDB emerged on the SQL side. And both of them absolutely weep the floor with
+DuckDB emerged on the SQL side. And both of them absolutely wipe the floor with
 Apache Spark when run on a single machine. According to [these
 benchmarks](https://duckdblabs.github.io/db-benchmark/) from September this year
 (2024), both Polars and DuckDB are several times faster than Apache Spark for

@@ -1,6 +1,6 @@
 ---
 title: "Writing my own database management system"
-draft: true
+draft: false
 date: 2025-02-23T20:00:00.000Z
 description: ""
 categories:
@@ -9,79 +9,6 @@ tags:
   - Data Modeling
   - Data Engineering
 ---
-
-Outline:
-
-* Intro
-* Where do you even begin?
-* Main components of a database management system
-* Minimum viable product
-* Conclusion
-
-
-# Intro
-
- - Been working on my own database since January.
- - Inspired by youtube video of a guy writing one in 7 months. Very basic in terms
- of features, but still about 60000 lines of Rust code.
- - I've been working with databases for my whole career, so I thought it would
-   be interesting to actually look into how the work under the hood.
- - I also recently started learning Zig, which is a systems programming language
-   that is very similar to Rust, but with a focus on simplicity and performance.
- - There is a quite famous open source project named TigerBeetle, which is a
-   financial transactions database written in Zig. They claim Zig is the systems
-   programming language for the next 30 years, so I thought if I manage to write
-   a database in Zig, I can also say that I really know the language.
-
-# Where do you even begin?
-
- - The youtube video I mentioned earlier mentioned some resources that he had 
- used to get a better understanding of how databases work.
-   - The Carnegie Mellon University youtube lectures are very good source.
-   - The github repo of the guy that did the youtube video have extremely
-     good explanations of the concepts, even with some nice Ascii drawings of
-     slotted page architecture and various memory buffers. 
- - An important component that I though is a good place to start is the storage
-   engine. The storage engine handles the communication between memory and disk,
-   i.e. it reads and writes pages to disk.
- - If I can implement a basic version of the slotted page architecture including
- serialization and deserialization of the pages, I think I have a good starting
- point.
-
-# Main components of a database management system
- - After that I think I'll move to the other end, i.e. implementing a REPL that the
-   user can use to interact with the database through SQL.
- - Then I (think I) need a SQL parser, query planner to interpret the SQL to
-   actual instructions. Then I also need some kind of execution engine that
-   takes those instructions and translates them into storage engine
-   instructions, i.e. "fetch these rows from this
-   page".
-
-# What features do I want?
-
- - To be honest, i'm not sure yet.
- - At least, I want to be able to create tables, insert rows, and select columns.
-   - I think that when I get the hang of how to select things, then I will have
-     a better understanding of how much work other
-     features such as where-clauses and order-by clauses will require. 
- - I also want the concept of schemas.
- - I also feel like I need to implement b-tree indexing. Since it's one of the
-   most crucial part of a relational database. From what I've studied so far,
-   the self-balancing algorithm is quite complex so let's see.
-
-# What do I want to get out of this?
-
- - Honestly, I'm not sure if I will ever have a job that requires me to write a
-   database from scratch and I actually do it because I think it's fun.
- - Some people like woodworking, others gardening. I happen to like programming.
-   I actually think it's a lot like woodworking, except you have unlimited raw
-   materials at your disposal.
- - I also do it to learn Zig. I recently read "The Pragmatic Programmer" and one
-   of the tips was to learn a new programming language every year. I think that's
-   a good tip, because it forces you to think about programming in a different
-   way.
-
-
 
 ## Introduction
 
@@ -128,20 +55,20 @@ knowledge on database internals.
 
 One of the first components I decided to tackle was the storage engine. The
 storage engine manages the communication between memory and disk, handling the
-reading and writing of data pages. My first goal is to implement a basic
-slotted page architecture, including serialization and deserialization of pages.
-Achieving this would give me a strong foundation to build upon.
+reading and writing of data pages. My first goal is to implement a basic slotted
+page architecture. Achieving this would give me a strong foundation to build
+upon.
 
 The first challenge that I encountered when starting was to understand how I
 even write a data structure to disk and then read it back into memory. I need
-some kind of file format to be able to write and read data to disk. And what even is
-a file format? LLMs where pretty good at resolving this issue, and I might write
-a more detailed post about it at some point, but the short answer is that a
-file format is just bytes written to disk in a certain order. If you know the
-order, you can also create a deserializer that reads the bytes back into memory and
-recreates the structs that you wrote to disk. Pretty simple when you think about
-it, but it's the kind of things that you really never have to do yourself unless
-you are writing low-level stuff.
+some kind of file format to be able to write and read data to disk. And what
+even is a file format? LLMs where pretty good at resolving this issue, and I
+might write a more detailed post about it at some point, but the short answer is
+that a file format is just bytes written to disk in a certain order. If you know
+the order, you can also create a deserializer that reads the bytes back into
+memory and recreates the structs that you wrote to disk. Pretty simple when you
+think about it, but it's the kind of things that you really never have to do
+yourself unless you are writing low-level things.
 
 After resolving the initial hurdles, I feel it's going pretty well. I've managed
 to implement a basic version of a slotted Page as well as a serializer and
@@ -187,7 +114,7 @@ here, but I'm not in a rush. My goal is to have fun and learn something new.
 Another big motivation is learning Zig. I recently read The Pragmatic
 Programmer, which suggests learning a new programming language every year. I
 think that’s excellent advice, as it forces you to rethink how you approach
-software development. I've been working with Python for many years not without
+software development. I've been working with Python for many years now without
 really making an effort to learn something else, so it's about time. One thing
 in Zig that is truly different from Python is how you think about memory. In
 Zig, you need to allocate memory yourself. And to do that successfully, you need
